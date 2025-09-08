@@ -1,6 +1,0 @@
-K:\dev\projects\MVCGrid.NetCore\obj\Debug\net8.0\MVCGrid.NetCore.csproj.AssemblyReference.cache
-K:\dev\projects\MVCGrid.NetCore\obj\Debug\net8.0\MVCGrid.NetCore.GeneratedMSBuildEditorConfig.editorconfig
-K:\dev\projects\MVCGrid.NetCore\obj\Debug\net8.0\MVCGrid.NetCore.AssemblyInfoInputs.cache
-K:\dev\projects\MVCGrid.NetCore\obj\Debug\net8.0\MVCGrid.NetCore.AssemblyInfo.cs
-K:\dev\projects\MVCGrid.NetCore\obj\Debug\net8.0\MVCGrid.NetCore.csproj.CoreCompileInputs.cache
-K:\dev\projects\MVCGrid.NetCore\obj\Debug\net8.0\MVCGrid.NetCore.sourcelink.json
