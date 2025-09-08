@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29215.179
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36414.22 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{88926C44-72D1-4EED-A028-D8A05AAF9F41}"
 	ProjectSection(SolutionItems) = preProject
@@ -15,15 +15,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCGrid", "MVCGrid\MVCGrid.csproj", "{7EE14ADE-A4B9-4454-B16A-78B4A5B7D0BE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCGridExample", "MVCGridExample\MVCGridExample.csproj", "{BCD171DD-1A3C-49A1-AA8B-7DC1FC2E548D}"
-	ProjectSection(ProjectDependencies) = postProject
-		{6952C680-783F-4EFB-A090-848B0E3438E0} = {6952C680-783F-4EFB-A090-848B0E3438E0}
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCGrid.RazorTemplates", "MVCGrid.RazorTemplates\MVCGrid.RazorTemplates.csproj", "{6952C680-783F-4EFB-A090-848B0E3438E0}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVCGrid.Net Core Example", "MVCGrid.Net Core Example\MVCGrid.Net Core Example.csproj", "{D8781876-3248-4967-8007-ECE86A0D5743}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVCGrid.NetCore", "MVCGrid.NetCore\MVCGrid.NetCore.csproj", "{CF8C55BB-6E70-4785-82C1-87AC1FCBFAF3}"
@@ -34,18 +25,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7EE14ADE-A4B9-4454-B16A-78B4A5B7D0BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7EE14ADE-A4B9-4454-B16A-78B4A5B7D0BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7EE14ADE-A4B9-4454-B16A-78B4A5B7D0BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7EE14ADE-A4B9-4454-B16A-78B4A5B7D0BE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BCD171DD-1A3C-49A1-AA8B-7DC1FC2E548D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BCD171DD-1A3C-49A1-AA8B-7DC1FC2E548D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BCD171DD-1A3C-49A1-AA8B-7DC1FC2E548D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BCD171DD-1A3C-49A1-AA8B-7DC1FC2E548D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6952C680-783F-4EFB-A090-848B0E3438E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6952C680-783F-4EFB-A090-848B0E3438E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6952C680-783F-4EFB-A090-848B0E3438E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6952C680-783F-4EFB-A090-848B0E3438E0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D8781876-3248-4967-8007-ECE86A0D5743}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D8781876-3248-4967-8007-ECE86A0D5743}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8781876-3248-4967-8007-ECE86A0D5743}.Release|Any CPU.ActiveCfg = Release|Any CPU
