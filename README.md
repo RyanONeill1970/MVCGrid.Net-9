@@ -1,5 +1,5 @@
-# MVCGrid.Net 2.0
-A table grid control for ASP.NET MVC and .NET Core and with ajax paging and sorting. Also has filtering support, export to csv, back button support, and graceful degradation. 
+# MVCGrid.Net 9.0
+A table grid control for ASP.NET MVC .net 9 (not the old 4.8 full framework) and with ajax paging and sorting. Also has filtering support, export to csv, back button support, and graceful degradation. 
 
 Easily configurable. All AJAX calls are handled for you... Simply tell it how to get your data!
 
@@ -15,5 +15,3 @@ Easily configurable. All AJAX calls are handled for you... Simply tell it how to
 ## Creator
 Alpha Shabazz
 Joe Harrison
-
-See http://mvcgrid.net
