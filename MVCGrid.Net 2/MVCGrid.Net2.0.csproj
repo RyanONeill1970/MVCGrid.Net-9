@@ -1,9 +1,0 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <RootNamespace>MVCGrid.Net2.0</RootNamespace>
-    <AssemblyName>MVCGrid.Net2.0</AssemblyName>
-  </PropertyGroup>
-
-</Project>
