@@ -1,0 +1,9 @@
+﻿global using Microsoft.AspNetCore;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.AspNetCore.Mvc.RazorPages;
+global using MvcGridSharp.Examples.Grids;
+global using MvcGridSharp.Examples.Models;
+global using MvcGridSharp.Extensions;
+global using MvcGridSharp.Models;
+global using MvcGridSharp.SignalR;
+global using MvcGridSharp.SignalR.Extensions;

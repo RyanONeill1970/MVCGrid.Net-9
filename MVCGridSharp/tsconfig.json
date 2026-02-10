@@ -1,0 +1,25 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "target": "ES2018",
+    "lib": [ "ES2018", "DOM" ],
+    "module": "None",
+    "moduleResolution": "node",
+    "declaration": true,
+    "outDir": "./Scripts/dist",
+    "rootDir": "./Scripts",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "typeRoots": [ "./node_modules/@types" ]
+  },
+  "include": [
+    "Scripts/MvcGridSharp.ts",
+    "Scripts/MvcGridSharpSignalR.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "Scripts/dist"
+  ]
+}

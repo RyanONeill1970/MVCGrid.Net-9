@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Authors>Alpha Shabazz</Authors>
+    <Version>1.0.1</Version>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description>A port / upgrade of MVCGrid to .net 9, initially developed by Joe Harrison / Alpha Shabazz.</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/ryanoneill1970/MvcGridSharp</PackageProjectUrl>
+    <PackageTags>MVCGrid mvcgrid alphashabazz mvcgrid.netcore grid .net core alpha shabazz</PackageTags>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\ajaxloader.gif" />
+    <None Remove="Images\sort.png" />
+    <None Remove="Images\sortdown.png" />
+    <None Remove="Images\sortup.png" />
+    <None Remove="Scripts\dist\MvcGridSharp.js" />
+    <None Remove="Scripts\dist\MvcGridSharpSignalR.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Images\ajaxloader.gif" />
+    <EmbeddedResource Include="Images\sort.png" />
+    <EmbeddedResource Include="Images\sortdown.png" />
+    <EmbeddedResource Include="Images\sortup.png" />
+    <EmbeddedResource Include="Scripts\dist\MvcGridSharp.js" />
+    <EmbeddedResource Include="Scripts\dist\MvcGridSharpSignalR.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+	<FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.72" />
+    <PackageReference Include="Microsoft.AspNet.SignalR.Client" Version="2.4.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Routing" Version="2.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Core" Version="1.2.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.2" />
+  </ItemGroup>
+
+</Project>
