@@ -148,7 +148,7 @@ public class MvcGridSharpHtmlGenerator
         {
             if (string.IsNullOrEmpty(applicationPath) == true)
             {
-                applicationPath = HtmlUtility.GetHandlerPath();
+                applicationPath = HtmlUtility.HandlerPath;
             }
             sbHtml.AppendFormat("<div id='MvcGridSharp_Loading_{0}' class='text-center' style='visibility: hidden'>", gridName);
             sbHtml.AppendFormat("&nbsp;&nbsp;&nbsp;<img src='{0}/ajaxloader.gif' alt='{1}' style='width: 15px; height: 15px;' />", applicationPath, def.ProcessingMessage);

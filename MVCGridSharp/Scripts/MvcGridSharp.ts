@@ -288,14 +288,14 @@ class MvcGridSharpClass {
             });
 
             // Add event listeners to checkboxes after they're created
-            const checkboxes = document.querySelectorAll(`input:checkbox[name='${gridName}cols']`);
+            const checkboxes = document.querySelectorAll(`input[type="checkbox"][name='${gridName}cols']`);
             checkboxes.forEach((checkbox) => {
                 checkbox.addEventListener('change', () => {
                     const jsonData: Record<string, boolean> = {};
                     const closestUl = (checkbox as HTMLElement).closest('ul');
                     const gridName = this.getGridName(closestUl!);
 
-                    const checkedBoxes = document.querySelectorAll(`input:checkbox[name='${gridName}cols']:checked`);
+                    const checkedBoxes = document.querySelectorAll(`input[type="checkbox"][name='${gridName}cols']:checked`);
                     checkedBoxes.forEach((checkedBox) => {
                         const inputElement = checkedBox as HTMLInputElement;
                         const columnName = inputElement.value;

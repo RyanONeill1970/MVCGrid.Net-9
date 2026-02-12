@@ -2,6 +2,8 @@
 
 public class HtmlUtility
 {
+    public const string HandlerPath = "/MvcGridSharp";
+
     public static string GetRootUrl()
     {
         return string.Empty;
@@ -68,12 +70,8 @@ public class HtmlUtility
         return String.Format("MvcGridSharp.setSort(\"{0}\", \"{1}\", \"{2}\"); return false;", gridName, columnName, direction.ToString());
     }
 
-    public static string GetHandlerPath()
-    {
-        return "/MvcGridSharpHandler.axd";
-    }
     public static string GetHandlerPath(string rootUrl)
     {
-        return rootUrl + GetHandlerPath();
+        return rootUrl + HandlerPath;
     }
 }

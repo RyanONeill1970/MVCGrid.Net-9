@@ -56,13 +56,31 @@ public static class MvcApplicationBuilderExtensions
     {
         app.Run(async context =>
         {
-            string path = context.Request.PathBase.Value;
-            if (path.Contains(".gif") || path.Contains(".png") || path.Contains(".jpg"))
+            // When using app.Map(), the matched path prefix is stripped from context.Request.Path
+            // So we need to check the original path using context.Request.PathBase + context.Request.Path
+            // or check the specific patterns the route was mapped for
+            string fullPath = context.Request.PathBase.Value + context.Request.Path.Value;
+            string path = context.Request.Path.Value ?? string.Empty;
+
+            // Check for image requests - either the remaining path or full path contains image extension
+            if (path.Contains(".gif") || path.Contains(".png") || path.Contains(".jpg") ||
+                fullPath.Contains(".gif") || fullPath.Contains(".png") || fullPath.Contains(".jpg"))
             {
-                path = "Images" + path.Replace(HtmlUtility.GetHandlerPath(), string.Empty);
-                byte[] image = GetResourceFileContentAsByteArray("MvcGridSharp", path);
-                context.Response.ContentType = "image/png";
-                await context.Response.Body.WriteAsync(image, 0, image.Length);
+                // Extract image filename from the full path
+                string imageName = System.IO.Path.GetFileName(fullPath);
+                string resourcePath = "Images/" + imageName;
+
+                try
+                {
+                    byte[] image = GetResourceFileContentAsByteArray("MvcGridSharp", resourcePath);
+                    context.Response.ContentType = imageName.EndsWith(".gif") ? "image/gif" : "image/png";
+                    await context.Response.Body.WriteAsync(image, 0, image.Length);
+                }
+                catch (FileNotFoundException)
+                {
+                    context.Response.StatusCode = 404;
+                    await context.Response.WriteAsync($"Image not found: {imageName}");
+                }
             }
             else
             {
@@ -78,30 +96,32 @@ public static class MvcApplicationBuilderExtensions
             }
         });
     }
+
     public static void HandleMvcGridScript(IApplicationBuilder app)
     {
         app.Run(async context =>
         {
-            string path = context.Request.PathBase.Value;
-            switch (path)
+            var path = context.Request.PathBase.Value;
+
+            if (string.IsNullOrWhiteSpace(path))
             {
-                case "/MvcGridSharp.js":
-                    {
-                        string script = GetResourceFileContentAsString("MvcGridSharp", "Scripts/dist/MvcGridSharp.js");
-                        script = script.Replace("%%CONTROLLERPATH%%", "gridmvc/grid");
-                        script = script.Replace("%%ERRORDETAILS%%", "false");
-                        script = script.Replace("%%HANDLERPATH%%", "../MvcGridSharp");
-                        context.Response.ContentType = "text/javascript";
-                        await context.Response.WriteAsync(script);
-                        break;
-                    }
-                case "/MvcGridSignalR.js":
-                    {
-                        string script = GetResourceFileContentAsString("MvcGridSharp", "Scripts/dist/MvcGridSignalR.js");
-                        context.Response.ContentType = "text/javascript";
-                        await context.Response.WriteAsync(script);
-                        break;
-                    }
+                return;
+            }
+
+            if (path.EndsWith("/MvcGridSharp.js", StringComparison.OrdinalIgnoreCase))
+            {
+                var script = GetResourceFileContentAsString("MvcGridSharp", "Scripts/dist/MvcGridSharp.js");
+                script = script.Replace("%%CONTROLLERPATH%%", "gridmvc/grid");
+                script = script.Replace("%%ERRORDETAILS%%", "false");
+                script = script.Replace("%%HANDLERPATH%%", "../MvcGridSharp");
+                context.Response.ContentType = "text/javascript";
+                await context.Response.WriteAsync(script);
+            }
+            else if (path.EndsWith("/MvcGridSharpSignalR.js", StringComparison.OrdinalIgnoreCase))
+            {
+                string script = GetResourceFileContentAsString("MvcGridSharp", "Scripts/dist/MvcGridSignalR.js");
+                context.Response.ContentType = "text/javascript";
+                await context.Response.WriteAsync(script);
             }
         });
     }
@@ -111,15 +131,19 @@ public static class MvcApplicationBuilderExtensions
         HttpHelper.Configure(app.ApplicationServices.GetService<IHttpContextAccessor>());
         GridRegistration.RegisterAllGrids();
 
-        var imageHandlerPath = HtmlUtility.GetHandlerPath();
+        var handlerPath = HtmlUtility.HandlerPath;
 
-        app.Map("/MvcGridSharp.js", HandleMvcGridScript);
-        app.Map("/MvcGridSharpSignalR.js", HandleMvcGridScript);
-        app.Map("/MvcGridSharp", HandleMvcGridSharp);
-        app.Map($"{imageHandlerPath}/sortup.png", HandleMvcGridSharp);
-        app.Map($"{imageHandlerPath}/sortdown.png", HandleMvcGridSharp);
-        app.Map($"{imageHandlerPath}/sort.png", HandleMvcGridSharp);
-        app.Map($"{imageHandlerPath}/ajaxloader.gif", HandleMvcGridSharp);
-        app.Map("/ajaxloader.gif", HandleMvcGridSharp);
+        // Register scripts
+        app.Map($"{handlerPath}/MvcGridSharp.js", HandleMvcGridScript);
+        app.Map($"{handlerPath}/MvcGridSharpSignalR.js", HandleMvcGridScript);
+
+        // Register image routes BEFORE the main handler so they match first
+        app.Map($"{handlerPath}/sortup.png", HandleMvcGridSharp);
+        app.Map($"{handlerPath}/sortdown.png", HandleMvcGridSharp);
+        app.Map($"{handlerPath}/sort.png", HandleMvcGridSharp);
+        app.Map($"{handlerPath}/ajaxloader.gif", HandleMvcGridSharp);
+
+        // Main grid handler - must be last so it doesn't catch image routes
+        app.Map($"{handlerPath}", HandleMvcGridSharp);
     }
 }

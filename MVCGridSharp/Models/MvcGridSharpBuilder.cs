@@ -362,7 +362,6 @@ public class MvcGridSharpBuilder<T1>
     /// <summary>
     /// Names of additional parameters that can be passed from client to server side
     /// </summary>
-    [Obsolete("This is no longer needed any query option can be added at runtime.", true)]
     public MvcGridSharpBuilder<T1> WithAdditionalQueryOptionNames(params string[] names)
     {
         foreach (var name in names)
