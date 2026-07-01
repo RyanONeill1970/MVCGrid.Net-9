@@ -14,12 +14,14 @@ public class GridEngine
             {
                 if (String.Compare(gridContext.QueryOptions.RenderingEngineName, configuredEngine.Value.Name, true) == 0)
                 {
-                    string engineName = gridContext.QueryOptions.RenderingEngineName;
-
-                    string typeString = gridContext.GridDefinition.RenderingEngines[engineName].Type;
+                    // Use the matched engine directly. Previously this re-indexed the dictionary with the
+                    // raw request value (e.g. "export"), but the collection is keyed by the engine's Name
+                    // (e.g. "Export"), so a casing mismatch threw KeyNotFoundException (INCARTEC-5RB).
+                    string typeString = configuredEngine.Value.Type;
                     Type engineType = Type.GetType(typeString, true);
 
                     renderingEngine = (IMvcGridSharpRenderingEngine)Activator.CreateInstance(engineType, true);
+                    break;
                 }
             }
         }

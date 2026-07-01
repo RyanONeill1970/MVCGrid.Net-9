@@ -23,7 +23,9 @@ public class RenderingEngine(string Name, string Type)
 
 public class RenderingEngineCollection : Dictionary<string, RenderingEngine>
 {
-    public RenderingEngineCollection() : base()
+    // Case-insensitive so lookups by the request's engine name (e.g. "export") match
+    // engines keyed by their Name (e.g. "Export"). See INCARTEC-5RB.
+    public RenderingEngineCollection() : base(StringComparer.OrdinalIgnoreCase)
     {
 
     }
